@@ -5,6 +5,7 @@ class Controller {
     const inputView = new InputView();
 
     const names = await inputView.getNames();
+    const tryCount = await inputView.getTryCount();
   }
 }
 

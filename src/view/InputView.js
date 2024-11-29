@@ -13,8 +13,21 @@ class InputView {
   }
 
   #validateNames(names) {
-    if (names.find((a) => a.length > 5)) throwError(ERROR_MESSAGES.exceedMaxNameLength);
-    if (names.length > CONFIG.maxCarCount) throwError(ERROR_MESSAGES.exceedMaxNamesCount);
+    if (names.find((a) => a.length > CONFIG.maxNameLength))
+      throwError(ERROR_MESSAGES.exceedMaxNameLength);
+    if (names.length > CONFIG.maxNameCount) throwError(ERROR_MESSAGES.exceedMaxNamesCount);
+  }
+
+  async getTryCount() {
+    const tryCount = await Reader.readNumber(INPUT_MESSAGES.tryCount);
+
+    this.#validateTryCount(tryCount);
+
+    return names;
+  }
+
+  #validateTryCount(tryCount) {
+    if (String(tryCount).length > CONFIG.maxTryCount) throwError(ERROR_MESSAGES.exceedMaxTryCount);
   }
 }
 
