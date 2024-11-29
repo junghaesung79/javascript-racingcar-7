@@ -1,1 +1,1 @@
-export const tryResult = '실행 결과';
+export const tryResult = '\n실행 결과';

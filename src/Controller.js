@@ -9,7 +9,9 @@ class Controller {
     const gameService = new GameService(names);
     const logs = gameService.play(tryCount);
     OutputView.printMiddleScore(logs);
-    gameService.getResult();
+
+    const winners = gameService.getWinners();
+    OutputView.printWinners(winners);
   }
 }
 

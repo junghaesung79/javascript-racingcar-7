@@ -1,5 +1,4 @@
 import { Car } from '../models/index.js';
-import OutputView from '../view/OutputView.js';
 
 class GameService {
   #cars;
@@ -29,7 +28,7 @@ class GameService {
     });
   }
 
-  getResult() {
+  getWinners() {
     return 0;
   }
 }

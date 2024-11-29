@@ -3,28 +3,26 @@ import { Printer } from '../io/index.js';
 
 class OutputView {
   static printMiddleScore(logs) {
-    this.#printNewline();
+    const tryResult = this.#toResult(logs);
+
     Printer.print(SCRIPT_MESSAGES.tryResult);
+    Printer.print(tryResult);
+  }
 
-    logs.forEach((log) => {
-      this.#printOneTry(log);
+  static #toResult(logs) {
+    return logs.reduce((acc, log) => {
+      return acc + this.#toParagraphLog(log) + '\n';
+    }, '');
+  }
+
+  static #toParagraphLog(carDatas) {
+    return carDatas.map(({ name, score }) => {
+      return `${name} : ${this.#toStringScore(score)}`;
     });
   }
 
-  static #printOneTry(carDatas) {
-    const scoreLines = carDatas.map(({ name, score }) => {
-      return `${name} : ${this.#visualizeScore(score)}`;
-    });
-
-    Printer.print(scoreLines.join('\n'));
-  }
-
-  static #visualizeScore(score) {
+  static #toStringScore(score) {
     return CONFIG.scoreSymbol.repeat(score);
-  }
-
-  static #printNewline() {
-    Printer.print('');
   }
 }
 
