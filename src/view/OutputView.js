@@ -3,26 +3,34 @@ import { Printer } from '../io/index.js';
 
 class OutputView {
   static printMiddleScore(logs) {
-    const tryResult = this.#toResult(logs);
+    const tryResult = this.#getResult(logs);
 
     Printer.print(SCRIPT_MESSAGES.tryResult);
     Printer.print(tryResult);
   }
 
-  static #toResult(logs) {
-    return logs.reduce((acc, log) => {
-      return acc + this.#toParagraphLog(log) + '\n';
-    }, '');
+  static #getResult(logs) {
+    return logs
+      .map((carDatas) => {
+        return this.#getParagraph(carDatas);
+      })
+      .join('\n\n');
   }
 
-  static #toParagraphLog(carDatas) {
-    return carDatas.map(({ name, score }) => {
-      return `${name} : ${this.#toStringScore(score)}`;
-    });
+  static #getParagraph(carDatas) {
+    return carDatas
+      .map(({ name, score }) => {
+        return `${name} : ${this.#toStringScore(score)}`;
+      })
+      .join('\n');
   }
 
   static #toStringScore(score) {
     return CONFIG.scoreSymbol.repeat(score);
+  }
+
+  static printWinners(winners) {
+    Printer.print(winners);
   }
 }
 
