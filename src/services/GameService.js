@@ -29,7 +29,18 @@ class GameService {
   }
 
   getWinners() {
-    return 0;
+    const highestScore = this.#getHighestScore();
+    return this.#cars.filter(this.#sameScoreWith(highestScore));
+  }
+
+  #getHighestScore() {
+    return this.#cars.reduce((acc, car) => {
+      return Math.max(acc, car.getScore());
+    }, 0);
+  }
+
+  #sameScoreWith(score) {
+    return (car) => car.getScore() === score;
   }
 }
 

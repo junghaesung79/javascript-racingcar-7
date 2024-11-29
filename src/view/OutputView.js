@@ -30,7 +30,9 @@ class OutputView {
   }
 
   static printWinners(winners) {
-    Printer.print(winners);
+    const names = winners.map((car) => car.getName());
+
+    Printer.print(`${SCRIPT_MESSAGES.finalWinner} ${names.join(', ')}`);
   }
 }
 
