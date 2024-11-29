@@ -1,8 +1,8 @@
-import { Console } from '@woowacourse/mission-utils';
+import { MissionUtils } from '@woowacourse/mission-utils';
 
 class Printer {
   static print(message) {
-    Console.print(message);
+    MissionUtils.Console.print(message);
   }
 }
 
