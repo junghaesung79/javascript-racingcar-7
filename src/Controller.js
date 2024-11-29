@@ -1,7 +1,11 @@
-class Controller {
-  constructor() {}
+import { InputView } from './view/index.js';
 
-  run() {}
+class Controller {
+  async run() {
+    const inputView = new InputView();
+
+    const names = await inputView.getNames();
+  }
 }
 
 export default Controller;
