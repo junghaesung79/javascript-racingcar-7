@@ -10,7 +10,7 @@ class Reader {
 
   static async readNumber(query) {
     const line = await Console.readLineAsync(query);
-    if (!Number.isInteger(line)) throwError('잘못된 입력입니다.');
+    if (!Number.isInteger(Number(line))) throwError('잘못된 입력입니다.');
     return Number(line);
   }
 }

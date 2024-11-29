@@ -17,6 +17,10 @@ class Car {
   #plusScore() {
     this.#score += 1;
   }
+
+  getData() {
+    return { name: this.#name, score: this.#score };
+  }
 }
 
 export default Car;

@@ -7,3 +7,5 @@ export const minRandomNumber = 0;
 export const maxRandomNumber = 9;
 
 export const minSuccessNumber = 4;
+
+export const scoreSymbol = '-';

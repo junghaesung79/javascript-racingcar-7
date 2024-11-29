@@ -1,4 +1,5 @@
 import { Car } from '../models/index.js';
+import OutputView from '../view/OutputView.js';
 
 class GameService {
   #cars;
@@ -10,8 +11,21 @@ class GameService {
   }
 
   play(tryCount) {
-    [...Array(tryCount)].forEach(() => {
-      this.#cars.tryOnce;
+    return [...Array(tryCount)].map(() => {
+      this.#tryAllCars();
+      return this.#getDatas();
+    });
+  }
+
+  #tryAllCars() {
+    this.#cars.forEach((car) => {
+      car.tryOnce();
+    });
+  }
+
+  #getDatas() {
+    return this.#cars.map((car) => {
+      return car.getData();
     });
   }
 
