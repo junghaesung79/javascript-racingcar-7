@@ -6,6 +6,10 @@ class Controller {
 
     const names = await inputView.getNames();
     const tryCount = await inputView.getTryCount();
+
+    const gameService = new GameService(names);
+    gameService.play(tryCount);
+    gameService.getResult();
   }
 }
 
