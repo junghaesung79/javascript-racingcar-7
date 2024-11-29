@@ -1,3 +1,3 @@
-import Cars from './Cars.js';
+import Car from './Car.js';
 
-export { Cars };
+export { Car };

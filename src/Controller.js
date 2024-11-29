@@ -1,3 +1,4 @@
+import { GameService } from './services/index.js';
 import { InputView } from './view/index.js';
 
 class Controller {

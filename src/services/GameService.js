@@ -1,15 +1,17 @@
-import { Cars } from '../models/index.js';
+import { Car } from '../models/index.js';
 
 class GameService {
   #cars;
 
-  constructor(tryCount) {
-    this.#cars = new Cars(tryCount);
+  constructor(names) {
+    this.#cars = names.map((name) => {
+      return new Car(name);
+    });
   }
 
   play(tryCount) {
     [...Array(tryCount)].forEach(() => {
-      this.#cars.try;
+      this.#cars.tryOnce;
     });
   }
 
