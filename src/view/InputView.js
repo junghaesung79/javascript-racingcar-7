@@ -4,8 +4,7 @@ import { throwError } from '../utils/errorHandler.js';
 
 class InputView {
   static async getNames() {
-    const line = await Reader.readLine(INPUT_MESSAGES.names);
-    const names = line.split(',');
+    const names = await Reader.readCSVString(INPUT_MESSAGES.names);
 
     this.#validateNames(names);
 
