@@ -1,3 +1,4 @@
+import { EventEmitter } from '../core/index.js';
 import { Car } from '../models/index.js';
 
 class GameService {
@@ -10,9 +11,8 @@ class GameService {
   }
 
   play(tryCount) {
-    return [...Array(tryCount)].map(() => {
+    [...Array(tryCount)].forEach(() => {
       this.#tryAllCars();
-      return this.#getDatas();
     });
   }
 
@@ -20,9 +20,11 @@ class GameService {
     this.#cars.forEach((car) => {
       car.tryOnce();
     });
+
+    EventEmitter.emit('tryOnce', this.#getProgresses());
   }
 
-  #getDatas() {
+  #getProgresses() {
     return this.#cars.map((car) => {
       return car.getData();
     });

@@ -1,3 +1,1 @@
-import GameService from './GameService.js';
-
-export { GameService };
+export { default as GameService } from './GameService.js';

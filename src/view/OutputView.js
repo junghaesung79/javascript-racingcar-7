@@ -2,27 +2,20 @@ import { CONFIG, SCRIPT_MESSAGES } from '../constants/index.js';
 import { Printer } from '../io/index.js';
 
 class OutputView {
-  static printMiddleScore(logs) {
-    const tryResult = this.#getResult(logs);
-
+  static printTryResult(logs) {
     Printer.print(SCRIPT_MESSAGES.tryResult);
-    Printer.print(tryResult);
   }
 
-  static #getResult(logs) {
-    return logs
-      .map((carDatas) => {
-        return this.#getParagraph(carDatas);
-      })
-      .join('\n\n');
+  static printGameProgress(progresses) {
+    const positions = this.#getPositions(progresses);
+
+    Printer.print(positions.join('\n'));
   }
 
-  static #getParagraph(carDatas) {
-    return carDatas
-      .map(({ name, score }) => {
-        return `${name} : ${this.#toStringScore(score)}`;
-      })
-      .join('\n');
+  static #getPositions(carDatas) {
+    return carDatas.map(({ name, score }) => {
+      return `${name} : ${this.#toStringScore(score)}`;
+    });
   }
 
   static #toStringScore(score) {
